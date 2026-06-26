@@ -1,0 +1,27 @@
+name: Desplegar en PC servidor
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - bot.py
+      - scripts/deploy-servidor.ps1
+      - .github/workflows/deploy-servidor.yml
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Actualizar bot en Windows
+    runs-on:
+      - self-hosted
+      - Windows
+      - X64
+
+    steps:
+      - name: Descargar codigo de GitHub
+        uses: actions/checkout@v4
+
+      - name: Copiar codigo y reiniciar bot
+        shell: powershell
+        run: .\scripts\deploy-servidor.ps1 -ServerPath "E:\Khipu_OS"
