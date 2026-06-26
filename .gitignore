@@ -1,0 +1,7 @@
+﻿LANZADOR.bat
+.env
+khipu_db.json
+__pycache__/
+*.pyc
+*.pyo
+*.log
